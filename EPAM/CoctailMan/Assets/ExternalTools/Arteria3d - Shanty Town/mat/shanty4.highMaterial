@@ -1,0 +1,12 @@
+highLevelMaterial shanty4
+{
+	template = ShaderBaseMaterial
+	diffuse1Map
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\shanty4.dds"
+	}
+	normalMap
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\shanty4_NRM.jpg"
+	}
+}

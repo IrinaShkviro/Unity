@@ -1,0 +1,12 @@
+highLevelMaterial ruinedcar
+{
+	template = ShaderBaseMaterial
+	diffuse1Map
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\ruinedcar.dds"
+	}
+	normalMap
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\ruinedcar_NRM.jpg"
+	}
+}

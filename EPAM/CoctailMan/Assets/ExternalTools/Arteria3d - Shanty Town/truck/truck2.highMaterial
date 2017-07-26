@@ -1,0 +1,10 @@
+highLevelMaterial truck2
+{
+	template = ShaderBaseMaterial
+	diffuseColor = 0.6 0.6 0.6
+	specularColor = 0 0 0 0
+	diffuse1Map
+	{
+		texture = ".\\tex\\truck_dirty.jpg"
+	}
+}

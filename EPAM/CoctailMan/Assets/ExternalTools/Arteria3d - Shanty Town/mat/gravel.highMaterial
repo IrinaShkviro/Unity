@@ -1,0 +1,8 @@
+highLevelMaterial gravel
+{
+	template = ShaderBaseMaterial
+	diffuse1Map
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\gravel.dds"
+	}
+}

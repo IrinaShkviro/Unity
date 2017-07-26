@@ -1,0 +1,12 @@
+highLevelMaterial rubbish
+{
+	template = ShaderBaseMaterial
+	diffuse1Map
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\rubbish.dds"
+	}
+	normalMap
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\rubbish_NRM.jpg"
+	}
+}

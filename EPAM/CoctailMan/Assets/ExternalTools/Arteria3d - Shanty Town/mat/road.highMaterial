@@ -1,0 +1,8 @@
+highLevelMaterial road
+{
+	template = ShaderBaseMaterial
+	diffuse1Map
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\road.jpg"
+	}
+}

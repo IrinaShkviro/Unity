@@ -1,0 +1,12 @@
+highLevelMaterial clothesline
+{
+	template = ShaderBaseMaterial
+	diffuse1Map
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\clothesline.dds"
+	}
+	normalMap
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\clothesline_NRM.jpg"
+	}
+}

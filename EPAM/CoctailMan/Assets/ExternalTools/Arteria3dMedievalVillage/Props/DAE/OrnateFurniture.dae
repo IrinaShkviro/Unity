@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Ultimate Unwrap3D Pro</author>
+      <authoring_tool>Ultimate Unwrap3D Pro v3.26</authoring_tool>
+      <comments>Exported from Ultimate Unwrap3D Pro on Sun Apr 03 23:26:35 2011</comments>
+      <source_data>file:///C:/Users/modelwhizz/Documents/Arteria3dMedievalVillage/Props/DAE/OrnateFurniture.dae</source_data>
+    </contributor>
+    <created>2011-04-03T22:26:35Z</created>
+    <modified>2011-04-03T22:26:35Z</modified>
+    <unit meter="1" name="meter"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_images>
+    <image id="Image" name="OrnateFurniture">
+      <init_from>./OrnateFurniture.jpg</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="VisualMaterial1" name="Unassigned">
+      <instance_effect url="#Effect"/>
+    </material>
+    <material id="VisualMaterial" name="OrnateFurniture">
+      <instance_effect url="#Effect1"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="Effect" name="Unassigned_eff">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>1 1 1 1</color>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>100</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <reflectivity>
+              <float>1</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>0</float>
+            </transparency>
+            <index_of_refraction>
+              <float>0</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA">
+              <spec_level>
+                <float>0</float>
+              </spec_level>
+              <emission_level>
+                <float>0</float>
+              </emission_level>
+            </technique>
+          </extra>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>0</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="Effect1" name="OrnateFurniture_eff">
+      <profile_COMMON>
+        <newparam sid="Image-surface">
+          <surface type="2D">
+            <init_from>Image</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Image-sampler">
+          <sampler2D>
+            <source>Image-surface</source>
+            <minfilter>LINEAR_MIPMAP_LINEAR</minfilter>
+            <magfilter>LINEAR</magfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Image-sampler" texcoord="UVSET0">
+                <extra>
+                  <technique profile="MAX3D">
+                    <amount>1</amount>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color>1 1 1 1</color>
+            </specular>
+            <shininess>
+              <float>0.78125</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <reflectivity>
+              <float>1</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>0</float>
+            </transparency>
+            <index_of_refraction>
+              <float>0</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA">
+              <spec_level>
+                <float>0</float>
+              </spec_level>
+              <emission_level>
+                <float>0</float>
+              </emission_level>
+            </technique>
+          </extra>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>0</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="geomU3D_id" name="geomU3D">
+      <mesh>
+        <source id="PositionSrc_id" name="PositionSrc">
+          <float_array id="PositionSrc_id-array" count="168">-7.14386 28.3242 -6.22365 -7.14386 28.3242 6.22364 7.14386 28.3242 6.22364 7.14386 28.3242 -6.22365 -7.14386 0 -6.22365 -7.14386 28.3242 -6.22365 7.14386 28.3242 -6.22365 7.14386 0 -6.22365 -5.33807 26.379 6.22364 -7.14386 26.379 6.22364 -7.14386 13.6059 6.22364 -5.33807 13.6059 6.22364 7.14386 26.379 6.22364 7.14386 28.3242 6.22364 -7.14386 28.3242 6.22364 5.07648 26.379 6.22364 7.14386 13.6059 6.22364 5.07648 13.6059 6.22364 5.07648 26.379 5.7539 -5.33807 26.379 5.7539 -5.33807 13.6059 5.7539 5.07648 13.6059 5.7539 7.14386 28.3242 -6.22365 7.14386 28.3242 6.22364 7.14386 26.379 6.22364 7.14386 13.6059 6.22364 7.14386 11.8816 6.22364 7.14386 0 6.22364 7.14386 0 -6.22365 -7.14386 0 -6.22365 -7.14386 0 6.22364 -7.14386 11.8816 6.22364 -7.14386 13.6059 6.22364 -7.14386 26.379 6.22364 -7.14386 28.3242 6.22364 -7.14386 28.3242 -6.22365 7.14386 0 -6.22365 7.14386 0 6.22364 4.93568 0 6.22364 -5.04345 0 6.22364 -7.14386 0 6.22364 -7.14386 0 -6.22365 7.14386 11.8816 6.22364 -7.14386 11.8816 6.22364 -5.04345 11.8816 6.22364 4.93568 11.8816 6.22364 7.14386 0 6.22364 4.93568 1.53965 6.22364 4.93568 0 6.22364 4.93568 11.8816 5.7539 -5.04345 11.8816 5.7539 -5.04345 1.53965 5.7539 4.93568 1.53965 5.7539 -5.04345 1.53965 6.22364 -5.04345 0 6.22364 -7.14386 0 6.22364</float_array>
+          <technique_common>
+            <accessor source="#PositionSrc_id-array" count="56" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="NormalSrc_id" name="NormalSrc">
+          <float_array id="NormalSrc_id-array" count="168">0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0.408248 -0.408248 0.816497 0 0 1 0 0 1 0.408248 0.408248 0.816497 0 0 1 0 0 1 0 0 1 -0.408248 -0.408248 0.816497 0 0 1 -0.408248 0.408248 0.816497 -0.57735 -0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 1 0 0 1 0.408248 -0.408248 0.816497 -0.408248 -0.408248 0.816497 0 0 1 -0.408248 0.408248 0.816497 0 0 1 -0.57735 -0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 0.408248 0.408248 0.816497 0 0 1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#NormalSrc_id-array" count="56" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="ColorSrc_id" name="ColorSrc">
+          <float_array id="ColorSrc_id-array" count="224">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#ColorSrc_id-array" count="56" stride="4">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+              <param name="A" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Tex1Src_id" name="Tex1Src">
+          <float_array id="Tex1Src_id-array" count="208">0.652515 0.740591 0.652515 0.240354 0.810519 0.240354 0.810519 0.740591 0.646851 0.088567 0.646851 0.888567 0.806656 0.888567 0.806656 0.088567 0.328963 0.942323 0.302787 0.931648 0.302035 0.485401 0.329503 0.487454 0.539219 0.931255 0.541514 0.986376 0.300477 0.986652 0.302787 0.931648 0.328963 0.942323 0.505752 0.940271 0.540001 0.485194 0.539219 0.931255 0.505752 0.940271 0.505175 0.484853 0.50698 0.931864 0.328643 0.930153 0.328513 0.476403 0.507342 0.478752 0.795161 0.911906 0.654534 0.911906 0.654534 0.855595 0.654534 0.485802 0.654534 0.435885 0.654534 0.091906 0.795161 0.091906 0.795161 0.091906 0.654534 0.091906 0.654534 0.435885 0.654534 0.485802 0.654534 0.855595 0.654534 0.911906 0.795161 0.911906 0.810519 0.740591 0.810519 0.240354 0.786099 0.240354 0.675743 0.240354 0.652515 0.240354 0.652515 0.740591 0.540619 0.447061 0.540001 0.485194 0.505175 0.484853 0.329503 0.487454 0.302035 0.485401 0.301409 0.446793 0.334812 0.454971 0.502963 0.455177 0.535641 0.024333 0.540619 0.447061 0.502963 0.455177 0.503688 0.084392 0.503123 0.027147 0.504564 0.447608 0.333035 0.447631 0.333537 0.079287 0.504056 0.079722 0.334018 0.084517 0.334668 0.027033 0.503123 0.027147 0.503688 0.084392 0.334812 0.454971 0.301409 0.446793 0.306442 0.02431 0.334668 0.027033 0.334018 0.084517 0.328963 0.942323 0.329503 0.487454 0.328513 0.476403 0.328643 0.930153 0.505752 0.940271 0.328963 0.942323 0.328643 0.930153 0.50698 0.931864 0.329503 0.487454 0.505175 0.484853 0.507342 0.478752 0.328513 0.476403 0.505175 0.484853 0.505752 0.940271 0.50698 0.931864 0.507342 0.478752 0.502963 0.455177 0.334812 0.454971 0.333035 0.447631 0.504564 0.447608 0.503688 0.084392 0.502963 0.455177 0.504564 0.447608 0.504056 0.079722 0.334812 0.454971 0.334018 0.084517 0.333537 0.079287 0.333035 0.447631 0.334018 0.084517 0.503688 0.084392 0.504056 0.079722 0.333537 0.079287</float_array>
+          <technique_common>
+            <accessor source="#Tex1Src_id-array" count="104" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Tex2Src_id" name="Tex2Src">
+          <float_array id="Tex2Src_id-array" count="208">0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#Tex2Src_id-array" count="104" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geomU3D_id-vertices">
+          <input semantic="POSITION" source="#PositionSrc_id"/>
+        </vertices>
+        <triangles count="0">
+          <input semantic="VERTEX" source="#geomU3D_id-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#NormalSrc_id" offset="1"/>
+          <input semantic="COLOR" source="#ColorSrc_id" offset="2" set="0"/>
+          <input semantic="TEXCOORD" source="#Tex1Src_id" offset="3" set="0"/>
+          <input semantic="TEXCOORD" source="#Tex2Src_id" offset="4" set="1"/>
+          <p/>
+        </triangles>
+        <polylist material="VisualMaterial0" count="22">
+          <input semantic="VERTEX" source="#geomU3D_id-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#NormalSrc_id" offset="1"/>
+          <input semantic="COLOR" source="#ColorSrc_id" offset="2" set="0"/>
+          <input semantic="TEXCOORD" source="#Tex1Src_id" offset="3" set="0"/>
+          <input semantic="TEXCOORD" source="#Tex2Src_id" offset="4" set="1"/>
+          <vcount>4 4 4 6 4 4 7 7 6 8 5 4 4 5 4 4 4 4 4 4 4 4</vcount>
+          <p>0 0 0 0 0 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 4 4 4 4 4 5 5 5 5 5 6 6 6 6 6 7 7 7 7 7 8 8 8 8 8 9 9 9 9 9 10 10 10 10 10 11 11 11 11 11 12 12 12 12 12 13 13 13 13 13 14 14 14 14 14 9 9 9 15 15 8 8 8 16 16 15 15 15 17 17 16 16 16 18 18 12 12 12 19 19 15 15 15 20 20 17 17 17 21 21 18 18 18 22 22 19 19 19 23 23 20 20 20 24 24 21 21 21 25 25 22 22 22 26 26 23 23 23 27 27 24 24 24 28 28 25 25 25 29 29 26 26 26 30 30 27 27 27 31 31 28 28 28 32 32 29 29 29 33 33 30 30 30 34 34 31 31 31 35 35 32 32 32 36 36 33 33 33 37 37 34 34 34 38 38 35 35 35 39 39 36 36 36 40 40 37 37 37 41 41 38 38 38 42 42 39 39 39 43 43 40 40 40 44 44 41 41 41 45 45 42 42 42 46 46 16 16 16 47 47 17 17 17 48 48 11 11 11 49 49 10 10 10 50 50 43 43 43 51 51 44 44 44 52 52 45 45 45 53 53 46 46 46 54 54 42 42 42 55 55 45 45 45 56 56 47 47 47 57 57 48 48 48 58 58 49 49 49 59 59 50 50 50 60 60 51 51 51 61 61 52 52 52 62 62 53 53 53 63 63 54 54 54 64 64 48 48 48 65 65 47 47 47 66 66 44 44 44 67 67 43 43 43 68 68 55 55 55 69 69 54 54 54 70 70 53 53 53 71 71 8 8 8 72 72 11 11 11 73 73 20 20 20 74 74 19 19 19 75 75 15 15 15 76 76 8 8 8 77 77 19 19 19 78 78 18 18 18 79 79 11 11 11 80 80 17 17 17 81 81 21 21 21 82 82 20 20 20 83 83 17 17 17 84 84 15 15 15 85 85 18 18 18 86 86 21 21 21 87 87 45 45 45 88 88 44 44 44 89 89 50 50 50 90 90 49 49 49 91 91 47 47 47 92 92 45 45 45 93 93 49 49 49 94 94 52 52 52 95 95 44 44 44 96 96 53 53 53 97 97 51 51 51 98 98 50 50 50 99 99 53 53 53 100 100 47 47 47 101 101 52 52 52 102 102 51 51 51 103 103</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="rootU3D">
+      <node id="meshU3D_id" name="meshU3D" type="NODE">
+        <translate>0 0 0</translate>
+        <rotate>1 0 0 0</rotate>
+        <scale>1 1 1</scale>
+        <instance_geometry url="#geomU3D_id">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="VisualMaterial0" target="#VisualMaterial">
+                <bind_vertex_input semantic="UVSET0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <extra>
+        <technique profile="MAX3D">
+          <frame_rate>30</frame_rate>
+        </technique>
+        <technique profile="MAYA">
+          <start_time>0</start_time>
+          <end_time>1</end_time>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>

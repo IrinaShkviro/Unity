@@ -1,0 +1,8 @@
+highLevelMaterial tyretracks
+{
+	template = ShaderBaseMaterial
+	diffuse1Map
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\tyretracks.jpg"
+	}
+}

@@ -1,0 +1,8 @@
+highLevelMaterial shanty9
+{
+	template = ShaderBaseMaterial
+	diffuse1Map
+	{
+		texture = "Types\\Arteria3d - Shanty Town\\tex\\shanty9.dds"
+	}
+}
