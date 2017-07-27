@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Project.Constants;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,15 +13,26 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private int rotationSpeed = 250;
     [SerializeField]
-    private int jumpHigh = 3;
+    private int jumpSpeed = 3;
+
+	private bool isJump = false;
+	int fordableMask = 1 << 8;
 
     void Start()
     {
         player = (GameObject)this.gameObject;
         playerBody = player.GetComponent<Rigidbody>();
+		isJump = false;
     }
 
-    // Update is called once per frame
+	void OnCollisionEnter(Collision collis) 
+	{ 
+		if (collis.gameObject.layer == EnvironmentConstants.fordableLayer) 
+		{ 
+			isJump = false; 
+		} 
+	} 
+		
     void Update()
     {
         if (Input.GetKey(KeyCode.W)) {
@@ -38,6 +50,15 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D)) {
 			playerBody.AddTorque(transform.up * rotationSpeed/10);
 		}
+
+		if (Input.GetKeyDown(KeyCode.Space)) 
+		{ 
+			if (isJump == false) 
+			{ 
+				isJump = true; 
+				playerBody.AddForce(transform.up * jumpSpeed, ForceMode.Impulse); 
+			} 
+		} 
 
 		// Calls the fire method when holding down ctrl or mouse
 		if (Input.GetButtonDown("Fire1")) {
