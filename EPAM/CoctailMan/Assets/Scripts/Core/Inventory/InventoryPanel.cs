@@ -12,9 +12,16 @@ namespace Project.Inventory
         private const int INVENTORY_TEXTURE_ID = 1;
 
         [SerializeField]
-        private float buttonWidth = 40;
+        private float cellWidth = 40;
         [SerializeField]
-        private float buttonHeight = 40;
+        private float cellHeight = 40;
+
+        [SerializeField]
+        private float playerWidth = 160f;
+        [SerializeField]
+        private float playerHeight = 160f;
+        [SerializeField]
+        private Texture2D playerTexture;
 
         [SerializeField]
         private int invRows = 6; 
@@ -22,12 +29,13 @@ namespace Project.Inventory
         private int invColumns = 4;
 
         [SerializeField]
-        private float startX = 130f;
+        private float x_inventory_shift = 130f;
         [SerializeField]
-        private float startY = 67f;
+        private float y_window_inventory_shift = 67f;
 
-        private const int x_cell_shift = 5;
-        private const int y_cell_shift = 20;
+        private const float x_cell_shift = 5f;
+        private const float y_player_shift = 20f;
+        private float y_cell_shift = 20f;
 
         private Rect inventoryWindowRect = new Rect();
         private Rect inventoryTempRect = new Rect();
@@ -36,7 +44,12 @@ namespace Project.Inventory
         private Item selectedItem;
 
         void OnGUI() {
-            inventoryWindowRect = new Rect(startX, startY, 170, 265);
+            inventoryWindowRect = new Rect(
+                x_inventory_shift
+                , y_window_inventory_shift
+                , 170
+                , 265
+            );
             inventoryWindowRect = GUI.Window(
                 INVENTORY_WINDOW_ID
                 , inventoryWindowRect
@@ -81,23 +94,35 @@ namespace Project.Inventory
             playerInventory.Add(0, ItemData.GetInstance.ItemGeneration(0));
             playerInventory.Add(1, ItemData.GetInstance.ItemGeneration(1));
             playerInventory.Add(2, ItemData.GetInstance.ItemGeneration(2));
+            y_cell_shift = y_player_shift + playerHeight;
         }
 
         void InventoryMode(int id) {
+            GUI.Label(
+                new Rect(
+                    x_cell_shift
+                    , y_player_shift
+                    , playerWidth
+                    , playerHeight
+                )
+                , new GUIContent(playerTexture)
+                , "cell"
+            );
             for (int y = 0; y < invRows; ++y) {
                 for (int x = 0; x < invColumns; ++x) {
                     if (playerInventory.ContainsKey(x + y * invColumns))
                     {
                         if (GUI.Button(
                                 new Rect(
-                                    x_cell_shift + (x * buttonHeight)
-                                    , y_cell_shift + (y * buttonHeight)
-                                    , buttonWidth
-                                    , buttonHeight
+                                    x_cell_shift + (x * cellHeight)
+                                    , y_cell_shift + (y * cellHeight)
+                                    , cellWidth
+                                    , cellHeight
                                 )
                                 , new GUIContent(playerInventory[x + y * invColumns].Texture)
-                                , "button")
+                                , "cell")
                             ) {
+                            
                             if (!isDragged) {
                                 isDragged = true; 
                                 selectedItem = playerInventory[x + y * invColumns];
@@ -109,13 +134,13 @@ namespace Project.Inventory
                         if (isDragged) {
                             if (GUI.Button(
                                     new Rect(
-                                        5 + (x * buttonHeight)
-                                        , 20 + (y * buttonHeight)
-                                        , buttonWidth
-                                        , buttonHeight
+                                        x_cell_shift + (x * cellHeight)
+                                        , y_cell_shift + (y * cellHeight)
+                                        , cellWidth
+                                        , cellHeight
                                     )
                                     , ""
-                                    , "button"
+                                    , "cell"
                             )) {
                                 playerInventory.Add(
                                     x + y * invColumns
@@ -127,13 +152,13 @@ namespace Project.Inventory
                         } else {
                             GUI.Label(
                                 new Rect(
-                                    x_cell_shift + (x * buttonHeight)
-                                    , y_cell_shift + (y * buttonHeight)
-                                    , buttonWidth
-                                    , buttonHeight
+                                    x_cell_shift + (x * cellHeight)
+                                    , y_cell_shift + (y * cellHeight)
+                                    , cellWidth
+                                    , cellHeight
                                 )
                                 , ""
-                                , "button"
+                                , "cell"
                             );
                         }
                     }

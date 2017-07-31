@@ -11,9 +11,12 @@ namespace Project.Inventory
         private string name;
         [SerializeField]
         private Texture2D texture;
+        [SerializeField]
+        private bool isRare = false;
 
         public string Name { get { return name; } }
         public Texture2D Texture { get { return texture; } } 
+        public bool IsRare { get { return isRare; } }
 
         public Item(string name, Texture2D texture) {           
             this.name = name;
