@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Project.Base;
 
 
 namespace Project.Inventory
@@ -11,54 +12,48 @@ namespace Project.Inventory
         private const int INVENTORY_WINDOW_ID = 0;
         private const int INVENTORY_TEXTURE_ID = 1;
 
+        private const float cell_width = 40;
+        private const float cell_height = 40;
+
+        private const float player_width = 160f;
+        private const float player_height = 160f;
         [SerializeField]
-        private float cellWidth = 40;
-        [SerializeField]
-        private float cellHeight = 40;
+        private Texture2D player_texture;
 
         [SerializeField]
-        private float playerWidth = 160f;
+        private int n_rows = 6; 
         [SerializeField]
-        private float playerHeight = 160f;
-        [SerializeField]
-        private Texture2D playerTexture;
+        private int n_columns = 4;
 
         [SerializeField]
-        private int invRows = 6; 
-        [SerializeField]
-        private int invColumns = 4;
+        private ConstPoint inventory_window_shift = new ConstPoint(130f, 67f);
 
         [SerializeField]
-        private float x_inventory_shift = 130f;
-        [SerializeField]
-        private float y_window_inventory_shift = 67f;
+        private ConstPoint cell_shift = new ConstPoint(5f, 20f);
+        private float y_shift = 20f;
 
-        private const float x_cell_shift = 5f;
-        private const float y_player_shift = 20f;
-        private float y_cell_shift = 20f;
+        private Rect inventory_window_rect = new Rect();
+        private Rect inventory_temp_rect = new Rect();
 
-        private Rect inventoryWindowRect = new Rect();
-        private Rect inventoryTempRect = new Rect();
-
-        private bool isDragged;
-        private Item selectedItem;
+        private bool is_dragged;
+        private Item selected_item;
 
         void OnGUI() {
-            inventoryWindowRect = new Rect(
-                x_inventory_shift
-                , y_window_inventory_shift
+            inventory_window_rect = new Rect(
+                inventory_window_shift.X
+                , inventory_window_shift.Y
                 , 170
                 , 265
             );
-            inventoryWindowRect = GUI.Window(
+            inventory_window_rect = GUI.Window(
                 INVENTORY_WINDOW_ID
-                , inventoryWindowRect
+                , inventory_window_rect
                 , InventoryMode
                 , "Inventory"
             );
 
-            if (isDragged) {
-                inventoryTempRect = GUI.Window(
+            if (is_dragged) {
+                inventory_temp_rect = GUI.Window(
                     INVENTORY_TEXTURE_ID
                     , new Rect(
                         Event.current.mousePosition.x + 1
@@ -68,7 +63,7 @@ namespace Project.Inventory
                     )
                     , SelectItem
                     , ""
-                    , "TempBox"
+                    , "box"
                 );
             }
         }
@@ -83,82 +78,151 @@ namespace Project.Inventory
                     , 40
                     , 40
                 )
-                , selectedItem.Texture
+                , selected_item.Texture
             );
         }
 
-        private Dictionary<int, Item> playerInventory = new Dictionary<int, Item>();
+        private Dictionary<int, Item> back_pack_inventory = 
+            new Dictionary<int, Item>();
+        public  Dictionary<PlayerSlot, Item> player_inventory = 
+            new Dictionary<PlayerSlot, Item>();
 
         void Start()
         {
-            playerInventory.Add(0, ItemData.GetInstance.ItemGeneration(0));
-            playerInventory.Add(1, ItemData.GetInstance.ItemGeneration(1));
-            playerInventory.Add(2, ItemData.GetInstance.ItemGeneration(2));
-            y_cell_shift = y_player_shift + playerHeight;
+            back_pack_inventory.Add(0, ItemData.GetInstance.ItemGeneration(0));
+            back_pack_inventory.Add(1, ItemData.GetInstance.ItemGeneration(1));
+            back_pack_inventory.Add(2, ItemData.GetInstance.ItemGeneration(2));
+            y_shift = cell_shift.Y + player_height;
+
+            player_inventory.Add(
+                new PlayerSlot(
+                    UserTypes.SlotTypes.LeftHand
+                    , new ConstPoint(player_width - 40f, 50f)
+                )
+                , null
+            );
+            player_inventory.Add(
+                new PlayerSlot(
+                    UserTypes.SlotTypes.RightHand
+                    , new ConstPoint(10f, 50f)
+                )
+                , null
+            );
         }
 
         void InventoryMode(int id) {
             GUI.Label(
                 new Rect(
-                    x_cell_shift
-                    , y_player_shift
-                    , playerWidth
-                    , playerHeight
+                    cell_shift.X
+                    , cell_shift.Y
+                    , player_width
+                    , player_height
                 )
-                , new GUIContent(playerTexture)
-                , "cell"
+                , new GUIContent(player_texture)
+                , "button"
             );
-            for (int y = 0; y < invRows; ++y) {
-                for (int x = 0; x < invColumns; ++x) {
-                    if (playerInventory.ContainsKey(x + y * invColumns))
+
+            ICollection<PlayerSlot> slots = player_inventory.Keys;
+            foreach (PlayerSlot slot in slots) {
+                if (player_inventory[slot] != null) {
+                    if (GUI.Button(
+                        new Rect(
+                            slot.Coord.X
+                            , slot.Coord.Y
+                            , cell_width
+                            , cell_height
+                        )
+                        , new GUIContent(player_inventory[slot].Texture)
+                        , "button")
+                    ) {
+                        if (!is_dragged) {
+                            is_dragged = true;
+                            selected_item = player_inventory[slot];
+                            player_inventory[slot] = null;
+                        }
+                    }
+                } else {
+                    if (is_dragged) {
+                        if (GUI.Button(
+                                new Rect(
+                                    slot.Coord.X
+                                    , slot.Coord.Y
+                                    , cell_width
+                                    , cell_height
+                                )
+                                , ""
+                                , "button"
+                        )) {
+                            player_inventory[slot] = selected_item;
+                            is_dragged = false;
+                            selected_item = null;
+                        }
+                    } else {
+                        GUI.Label(
+                            new Rect(
+                                slot.Coord.X
+                                , slot.Coord.Y
+                                , cell_width
+                                , cell_height
+                            )
+                            , ""
+                            , "button"
+                        );
+                    }
+                }
+            }
+
+            for (int y = 0; y < n_rows; ++y) {
+                for (int x = 0; x < n_columns; ++x) {
+                    if (back_pack_inventory.ContainsKey(x + y * n_columns))
                     {
                         if (GUI.Button(
                                 new Rect(
-                                    x_cell_shift + (x * cellHeight)
-                                    , y_cell_shift + (y * cellHeight)
-                                    , cellWidth
-                                    , cellHeight
+                                    cell_shift.X + (x * cell_height)
+                                    , y_shift + (y * cell_height)
+                                    , cell_width
+                                    , cell_height
                                 )
-                                , new GUIContent(playerInventory[x + y * invColumns].Texture)
-                                , "cell")
+                                , new GUIContent(back_pack_inventory[x + y * n_columns].Texture)
+                                , "button")
                             ) {
                             
-                            if (!isDragged) {
-                                isDragged = true; 
-                                selectedItem = playerInventory[x + y * invColumns];
-                                playerInventory.Remove(x + y * invColumns);
+                            if (!is_dragged) {
+                                is_dragged = true; 
+                                selected_item = back_pack_inventory[x + y * n_columns];
+                                back_pack_inventory.Remove(x + y * n_columns);
                             }
                         }
                     }
                     else {
-                        if (isDragged) {
+                        if (is_dragged) {
                             if (GUI.Button(
                                     new Rect(
-                                        x_cell_shift + (x * cellHeight)
-                                        , y_cell_shift + (y * cellHeight)
-                                        , cellWidth
-                                        , cellHeight
+                                        cell_shift.X + (x * cell_height)
+                                        , y_shift + (y * cell_height)
+                                        , cell_width
+                                        , cell_height
                                     )
                                     , ""
-                                    , "cell"
+                                    , "button"
                             )) {
-                                playerInventory.Add(
-                                    x + y * invColumns
-                                    , selectedItem
+                                back_pack_inventory.Add(
+                                    x + y * n_columns
+                                    , selected_item
                                 );
-                                isDragged = false;
-                                selectedItem = null;
+                                is_dragged = false;
+                                selected_item = null;
                             }
                         } else {
                             GUI.Label(
                                 new Rect(
-                                    x_cell_shift + (x * cellHeight)
-                                    , y_cell_shift + (y * cellHeight)
-                                    , cellWidth
-                                    , cellHeight
+                                    cell_shift.X + (x * cell_height)
+                                    , y_shift + (y * cell_height)
+                                    , cell_width
+                                    , cell_height
                                 )
                                 , ""
-                                , "cell"
+                                , "button"
                             );
                         }
                     }

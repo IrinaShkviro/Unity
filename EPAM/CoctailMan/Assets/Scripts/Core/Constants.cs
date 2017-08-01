@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Project.Constants {
+namespace Project.Base {
 	public class EnvironmentConstants {
 		public const int fordableLayer = 8;
 	}
-} // Constants
+} // Project.Base

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Project.Constants;
+using Project.Base;
 
 namespace Project.Player
 {

@@ -22,6 +22,5 @@ namespace Project.Inventory
             this.name = name;
             this.texture = texture;
         }
-
     }
 }
