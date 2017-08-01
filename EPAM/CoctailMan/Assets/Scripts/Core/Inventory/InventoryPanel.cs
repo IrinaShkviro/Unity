@@ -82,16 +82,11 @@ namespace Project.Inventory
             );
         }
 
-        private Dictionary<int, Item> back_pack_inventory = 
-            new Dictionary<int, Item>();
         public  Dictionary<PlayerSlot, Item> player_inventory = 
             new Dictionary<PlayerSlot, Item>();
 
         void Start()
         {
-            back_pack_inventory.Add(0, ItemData.GetInstance.ItemGeneration(0));
-            back_pack_inventory.Add(1, ItemData.GetInstance.ItemGeneration(1));
-            back_pack_inventory.Add(2, ItemData.GetInstance.ItemGeneration(2));
             y_shift = cell_shift.Y + player_height;
 
             player_inventory.Add(
@@ -174,7 +169,7 @@ namespace Project.Inventory
 
             for (int y = 0; y < n_rows; ++y) {
                 for (int x = 0; x < n_columns; ++x) {
-                    if (back_pack_inventory.ContainsKey(x + y * n_columns))
+                    if (BackPack.GetInstance.Inventory.ContainsKey(x + y * n_columns))
                     {
                         if (GUI.Button(
                                 new Rect(
@@ -183,14 +178,14 @@ namespace Project.Inventory
                                     , cell_width
                                     , cell_height
                                 )
-                                , new GUIContent(back_pack_inventory[x + y * n_columns].Texture)
+                                , new GUIContent(BackPack.GetInstance.Inventory[x + y * n_columns].Texture)
                                 , "button")
                             ) {
                             
                             if (!is_dragged) {
-                                is_dragged = true; 
-                                selected_item = back_pack_inventory[x + y * n_columns];
-                                back_pack_inventory.Remove(x + y * n_columns);
+                                is_dragged = true;
+                                selected_item = BackPack.GetInstance.Inventory[x + y * n_columns];
+                                BackPack.GetInstance.Inventory.Remove(x + y * n_columns);
                             }
                         }
                     }
@@ -206,7 +201,7 @@ namespace Project.Inventory
                                     , ""
                                     , "button"
                             )) {
-                                back_pack_inventory.Add(
+                                BackPack.GetInstance.Inventory.Add(
                                     x + y * n_columns
                                     , selected_item
                                 );
