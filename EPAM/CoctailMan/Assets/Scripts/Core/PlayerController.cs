@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Project.Base;
 
-namespace Project.Player
+namespace Project.Mob
 {
     public class PlayerController : MonoBehaviour
     {
